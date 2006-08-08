@@ -1,0 +1,26 @@
+<html><body><table>
+<tr>
+<td><h3 align="left">Nome</h3></td>
+<td><h3 align="left">Cognome</h3></td>
+<td><h3 align="left">Matricola</h3></td>
+<td><h3 align="left">E-Mail</h3></td>
+</tr>
+  <tr>
+<td>Tullio</td>
+<td>Vernazza</td>
+<td>28042</td>
+<td>tullio@dist.unige.it</td>
+</tr>
+  <tr>
+<td>Francesco</td>
+<td>Di Cerbo</td>
+<td>2230317</td>
+<td>shaddy@cyberspace.org</td>
+</tr>
+  <tr>
+<td>Simone</td>
+<td>Gammeri</td>
+<td></td>
+<td>simone.gammeri@gmail.com</td>
+</tr>
+</table></body></html>

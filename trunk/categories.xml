@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<categories>
+  <category>
+    <id>8</id>
+    <name>Secondo Anno</name>
+    <description></description>
+    <parent>0</parent>
+    <sortorder>2</sortorder>
+    <coursecount>0</coursecount>
+    <visible>1</visible>
+    <timemodified>0</timemodified>
+  </category>
+  <category>
+    <id>13</id>
+    <name>Elettronica 1</name>
+    <description></description>
+    <parent>8</parent>
+    <sortorder>5</sortorder>
+    <coursecount>1</coursecount>
+    <visible>1</visible>
+    <timemodified>0</timemodified>
+  </category>
+  <category>
+    <id>18</id>
+    <name>Calcolatori Elettronici 1</name>
+    <description></description>
+    <parent>8</parent>
+    <sortorder>999</sortorder>
+    <coursecount>1</coursecount>
+    <visible>1</visible>
+    <timemodified>0</timemodified>
+  </category>
+</categories>

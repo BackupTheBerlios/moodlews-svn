@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<definitions name="MoodlePlugin" 
+	targetNamespace="http://www.myserver.com/moodle" 
+	xmlns:tns="http://www.myserver.com/moodle" 
+	  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+	<message name="importUsersRequest">
+		<part name="xml" type="xsd:string"/>
+		<part name="courseID" type="xsd:int" xsd:minOccurs="0"/>
+		<part name="shortname" type="xsd:string" xsd:minOccurs="0"/>
+	</message>
+	<message name="importUsersResponse">
+		<part name="count" type="xsd:int"/>
+	</message>
+	<message name="exportUsersRequest">
+		<part name="courseID" type="xsd:int" xsd:minOccurs="0"/>
+		<part name="shortname" type="xsd:string" xsd:minOccurs="0" />
+	</message>
+	<message name="exportUsersResponse">
+		<part name="xml" type="xsd:string"/>
+	</message>
+	<message name="importCoursesRequest">
+		<part name="xml" type="xsd:string"/>
+		<part name="catID" type="xsd:int" />
+		<part name="catName" type="xsd:string"/>
+	</message>
+	<message name="importCoursesResponse">
+		<part name="count" type="xsd:int"/>
+	</message>
+	<message name="exportCoursesRequest">
+		<part name="catID" type="xsd:int" xsd:minOccurs="0"/>
+		<part name="catName" type="xsd:string" xsd:minOccurs="0"/>
+		<part name="courseID" type="xsd:int" xsd:minOccurs="0"/>
+		<part name="shortname" type="xsd:string" xsd:minOccurs="0"/>
+	</message>
+	<message name="exportCoursesResponse">
+		<part name="xml" type="xsd:string"/>
+	</message>
+	
+	<message name="importCategoriesRequest">
+		<part name="xml" type="xsd:string"/>
+		<part name="catID" type="xsd:int" xsd:minOccurs="0" />
+		<part name="catName" type="xsd:string" xsd:minOccurs="0"/>
+	</message>
+	<message name="importCategoriesResponse">
+		<part name="count" type="xsd:int"/>
+	</message>
+	<message name="exportCategoriesRequest">
+		<part name="catID" type="xsd:int" xsd:minOccurs="0"/>
+		<part name="catName" type="xsd:string" xsd:minOccurs="0"/>
+	</message>
+	<message name="exportCategoriesResponse">
+		<part name="xml" type="xsd:string"/>
+	</message>
+	<message name="enrolStudentsRequest">
+		<part name="xml" type="xsd:string"/>
+		<part name="courseID" type="xsd:int"/>
+		<part name="shortname" type="xsd:string"/>
+	</message>
+	<message name="enrolStudentsResponse">
+		<part name="count" type="xsd:int"/>
+	</message>
+	<message name="getFailedRequest">
+		<part name="errorType" type="xsd:string"/>
+	</message>
+	<message name="getFailedResponse">
+		<part name="Faileds" type="xsd:string"/>
+	</message>
+	
+	<portType name="MoodlePluginPortType">
+		<operation name="importUsers">
+	    	<input message="tns:importUsersRequest"/>
+	    	<output message="tns:importUsersResponse"/>
+	  	</operation>
+		<operation name="exportUsers">
+	    	<input message="tns:exportUsersRequest"/>
+	    	<output message="tns:exportUsersResponse"/>
+	  	</operation>
+	
+		<operation name="importCourses">
+	    	<input message="tns:importCoursesRequest"/>
+	    	<output message="tns:importCoursesResponse"/>
+	  	</operation>
+		<operation name="exportCourses">
+	    	<input message="tns:exportCoursesRequest"/>
+	    	<output message="tns:exportCoursesResponse"/>
+	  	</operation>
+		<operation name="importCategories">
+	    	<input message="tns:importCategoriesRequest"/>
+	    	<output message="tns:importCategoriesResponse"/>
+	  	</operation>
+		<operation name="exportCategories">
+	    	<input message="tns:exportCategoriesRequest"/>
+	    	<output message="tns:exportCategoriesResponse"/>
+	  	</operation>
+	
+		<operation name="enrolStudents">
+	    	<input message="tns:enrolStudentsRequest"/>
+	    	<output message="tns:enrolStudentsResponse"/>
+		</operation>
+		
+		<operation name="getFailed">
+	    	<input message="tns:getFailedRequest"/>
+	    	<output message="tns:getFailedResponse"/>
+		</operation>
+	</portType>
+	
+	<binding name="MoodlePluginBinding" type="tns:MoodlePluginPortType">
+	  	<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		
+		<operation name="importUsers">
+			<soap:operation soapAction="importUsers"/>
+	   		<input>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+	   		</input>
+	   		<output>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		    </output>
+		</operation>
+		<operation name="exportUsers">
+			<soap:operation soapAction="exportUsers"/>
+	   		<input>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+	   		</input>
+	   		<output>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		    </output>
+		</operation>
+		
+		<operation name="importCourses">
+			<soap:operation soapAction="importCourses"/>
+	   		<input>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+	   		</input>
+	   		<output>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		    </output>
+		</operation>
+		<operation name="exportCourses">
+			<soap:operation soapAction="exportCourses"/>
+	   		<input>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+	   		</input>
+	   		<output>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		    </output>
+		</operation>
+		<operation name="importCategories">
+			<soap:operation soapAction="importCategories"/>
+	   		<input>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+	   		</input>
+	   		<output>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		    </output>
+		</operation>
+		<operation name="exportCategories">
+			<soap:operation soapAction="exportCategories"/>
+	   		<input>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+	   		</input>
+	   		<output>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		    </output>
+		</operation>
+		
+		<operation name="enrolStudents">
+			<soap:operation soapAction="enrolStudents"/>
+	   		<input>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+	   		</input>
+	   		<output>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		    </output>
+		</operation>
+
+		<operation name="getFailed">
+			<soap:operation soapAction="getFailed"/>
+	   		<input>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+	   		</input>
+	   		<output>
+				<soap:body use="encoded" namespace="http://www.myserver.com/moodle"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+		    </output>
+		</operation>
+	</binding>
+	
+	<service name="MoodlePluginService">
+		<port name="MoodlePluginPort" binding="MoodlePluginBinding">
+			<soap:address location="https://www.myserver.com/moodle/serversoap.php"/>
+		</port>
+	</service>
+</definitions>

@@ -1,0 +1,91 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--
+Copyright 2005 Simone Gammeri, Francesco Di Cerbo, LIPS Lab University of Genova, ITALY
+
+This file is part of MoodleSoapPlugin.
+
+MoodleSoapPlugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+MoodleSoapPlugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with MoodleSoapPlugin; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
+--!>
+<xsd:annotation>
+		<xsd:documentation xml:lang="en">
+			IMPORT-EXPORT XMLSchema-courses
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="courses">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="course" type="courseType" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="courseType">
+		<xsd:all>
+			<xsd:element name="id" type="xsd:unsignedLong" minOccurs="0"/>
+			<xsd:element name="category" type="xsd:unsignedLong" minOccurs="0"/>
+			<xsd:element name="sortorder" type="xsd:unsignedLong" minOccurs="0"/>
+			<xsd:element name="password" type="char50Type" />
+			<xsd:element name="fullname" type="char254Type" />
+			<xsd:element name="shortname" type="char15Type" />
+			<xsd:element name="idnumber" type="char50Type" />
+			<xsd:element name="summary" type="xsd:string" />
+			<xsd:element name="format" type="char10Type" />
+			<xsd:element name="showgrades" type="xsd:byte" />
+			<xsd:element name="modinfo" type="xsd:string" />
+			<xsd:element name="blockinfo" type="xsd:string" />
+			<xsd:element name="newsitems" type="xsd:short" />
+			<xsd:element name="teacher" type="char100Type" minOccurs="0" />
+			<xsd:element name="teachers" type="char100Type" minOccurs="0" />
+			<xsd:element name="student" type="char100Type" />
+			<xsd:element name="students" type="char100Type" />
+			<xsd:element name="guest" type="xsd:byte" />
+			<xsd:element name="startdate" type="xsd:unsignedLong" />
+			<xsd:element name="enrolperiod" type="xsd:unsignedLong" />
+			<xsd:element name="numsections" type="xsd:short" />
+			<xsd:element name="marker" type="xsd:unsignedLong" />
+			<xsd:element name="maxbytes" type="xsd:unsignedLong" />
+			<xsd:element name="showreports" type="xsd:short" />
+			<xsd:element name="visible" type="xsd:boolean" />
+			<xsd:element name="hiddensections" type="xsd:byte" />
+			<xsd:element name="groupmode" type="xsd:short" />
+			<xsd:element name="groupmodeforce" type="xsd:short" />
+			<xsd:element name="lang" type="char10Type" />
+			<xsd:element name="cost" type="char10Type" />
+			<xsd:element name="timecreated" type="xsd:unsignedLong" />
+			<xsd:element name="timemodified" type="xsd:unsignedLong" />
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="char100Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="char254Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="254" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="char15Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="char50Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="char10Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="char255Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>
