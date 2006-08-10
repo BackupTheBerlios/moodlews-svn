@@ -1,6 +1,6 @@
 WHAT IS MOODLEPLUGIN
 
-MoodlePlugin is a plugin class for Moodle which enables you to get and store information directly on Moodle database. The SOAP interface we developed infact offers the methods to remotely import/export users, courses and courses categories.
+MoodlePlugin is a plugin class for Moodle which enables you to get and store information directly on Moodle database. The SOAP interface we developed infact offers the methods to remotely add/update/delete users and import/export users, courses and courses categories.
 
 REQUIREMENTS
 
@@ -16,16 +16,17 @@ HOW TO USE
 
 To use the SOAP interface you have to create a SOAP client like the sample one you can find in the package, which is a PHP script. You can see which methods are available by accessing the SOAP server directly from your browser (servesoap.php); then you can use them directly from the SOAP client you made up, accordingly with the interface which is described in "moodleplugin.php".
 
-All the files contained in this package are licensed with GPLv2, but we're looking for a way to restrict military uses on them. We may change our license policy in next releases, mantaining the most essential open source features to achieve our goal.
+All the files contained in this package are licensed with GPLv2, but we're looking for a way to restrict military uses on them. We may change our license policy in next releases, maintaining the most essential open source features to achieve our goal.
  
 TODO
-The work on MoodlePlugin class is still in progress: we need  to implement an easy way to interactively configure the parameters which are passed to the script.
+The work on MoodlePlugin class is still in progress: we need to implement an easy way to interactively configure the parameters which are passed to the script.
 
 
 Copyrighted by 
 Simone Gammeri (simone.gammeri@gmail.com),
 Francesco Di Cerbo (shadowscheme@gmail.com)
-and L.I.P.S. (www.lips.dist.unige.it)
+and L.I.P.S. (www.lips.dist.unige.it),
+Kay Schewe (kay@node71.de)
 
 For further information see the article we exposed at OSS2005 (oss2005.case.unibz.it): "OpenSource for e-Government Application Integration: a PHP-based solution".
 
