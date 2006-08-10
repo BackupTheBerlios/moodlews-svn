@@ -20,10 +20,13 @@ You should have received a copy of the GNU General Public License along with Moo
 	$server = new SoapServer("moodleplugin.wsdl",array('soap_version' =>SOAP_1_2, 'encoding'=>"UTF-8"));
 	$server->setClass("MoodlePlugin");
 
-	if (!(adminlogin($_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']))) { // Check username and password
+	session_start();
+	session_name('PHPMOODLEWSSESSID');
+	
+	/*if (!(adminlogin($_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW']))) { // Check username and password
 		authenticate(); // Send basic authentication headers because username and/or password didnot match
 		}
-	else {
+	else {*/
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$server->setPersistence(SOAP_PERSISTENCE_REQUEST);
 		try{
@@ -42,7 +45,7 @@ You should have received a copy of the GNU General Public License along with Moo
 		    echo $func . "<br>";
 		}
 	}
-	}
+	//}
 
 // Call authentication display
 function authenticate() {

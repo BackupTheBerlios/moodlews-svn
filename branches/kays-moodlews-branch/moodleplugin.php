@@ -43,8 +43,116 @@ You should have received a copy of the GNU General Public License along with Moo
 	cross-match, so that users are avoided from any possible error.
 
 ***/
+
+	define('MOODLEWS_SUCCESS',	'success');
+	define('MOODLEWS_ERROR', 	'error');
+	define('MOODLEWS_VIOLENCE', 'violence');
+	
 	class MoodlePlugin
 	{	
+		/*
+		 * 
+		 */
+		private function isAuthenticated()
+		{
+			if ($_SESSION['MoodlePlugin'])
+			{
+				return true;
+			}
+			
+			return false;
+		}
+		
+		public function login($username, $password)
+		{
+			$user = authenticate_user_login($username, $password);
+			if ((0 < $user->id)
+			&& $user->admin)
+			{
+				$_SESSION['MoodlePlugin'] = true;
+				return session_id();//var_export($user, true);
+			}
+			
+			return MOODLEWS_ERROR;
+		}
+		
+		public function logout($PHPMOODLEWSSESSID)
+		{
+			if ($_SESSION['MoodlePlugin'])
+			{
+				$_SESSION = array();
+				return MOODLEWS_SUCCESS;
+			}
+			
+			return MOODLEWS_ERROR;
+		}
+		
+		public function addUser($PHPMOODLEWSSESSID, $username, $password, $firstname, $lastname, $email)
+		{
+			if (!$this->isAuthenticated())
+			{
+				return MOODLEWS_VIOLENCE;
+			}
+			
+			$user = new object();
+			$user->confirmed = 1;
+			
+			$user->username 	= $username;
+			$user->password 	= $password;
+			$user->firstname 	= $firstname;
+			$user->lastname 	= $lastname;
+			$user->email 		= $email;
+			
+			$id = insert_record($this->users_table, $user);
+			if ($id)
+			{
+				return MOODLEWS_SUCCESS;
+			}
+			
+			return MOODLEWS_ERROR;
+		}
+		
+		public function updateUser($PHPMOODLEWSSESSID, $username, $firstname, $lastname, $email)
+		{
+			if (!$this->isAuthenticated())
+			{
+				return MOODLEWS_VIOLENCE;
+			}
+			
+			$user = get_user_info_from_db('username', $username);
+			if (0 < $user->id)
+			{
+				$user->confirmed 	= 1;
+				$user->username 	= $username;
+				$user->firstname 	= $firstname;
+				$user->lastname 	= $lastname;
+				$user->email 		= $email;
+			
+				$id = update_record($this->users_table, $user);
+				if ($id)
+				{
+					return MOODLEWS_SUCCESS;
+				}
+			}
+			
+			return MOODLEWS_ERROR;
+		}
+		
+		public function deleteUser($PHPMOODLEWSSESSID, $username)
+		{	
+			if (!$this->isAuthenticated())
+			{
+				return MOODLEWS_VIOLENCE;
+			}
+			
+			$id = delete_records($this->users_table, 'username', $username);
+			if ($id)
+			{
+				return MOODLEWS_SUCCESS;
+			}
+			
+			return MOODLEWS_ERROR;
+		}
 		
 	/*** 	
 		
@@ -545,6 +653,7 @@ You should have received a copy of the GNU General Public License along with Moo
 			$xml->appendChild($root);
 			
 			//Return a string containing the XML Document
+		
 			$xml->save($this->courses_xml);
 			$f=fopen($this->courses_xml,r);
 			$str=fread($f, filesize($this->courses_xml));
