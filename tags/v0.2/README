@@ -1,0 +1,32 @@
+WHAT IS MOODLEPLUGIN
+
+MoodlePlugin is a plugin class for Moodle which enables you to get and store information directly on Moodle database. The SOAP interface we developed infact offers the methods to remotely add/update/delete users and import/export users, courses and courses categories.
+
+REQUIREMENTS
+
+In order to get MoodlePlugin functioning you MUST have PHP5 on your web server with SOAP and XSL support enabled.
+
+HOW TO INSTALL
+
+To install and get it operative you only have to put the files you found in the packageinto your Moodle main directory.
+Then open moodleplugin.wsdl and replace "www.myserver.com/moodle" with your domain and that's it: you will have a soap server which is listening on port 443 and which you can connect to.
+
+
+HOW TO USE
+
+To use the SOAP interface you have to create a SOAP client like the sample one you can find in the package, which is a PHP script. You can see which methods are available by accessing the SOAP server directly from your browser (servesoap.php); then you can use them directly from the SOAP client you made up, accordingly with the interface which is described in "moodleplugin.php".
+
+All the files contained in this package are licensed with GPLv2, but we're looking for a way to restrict military uses on them. We may change our license policy in next releases, maintaining the most essential open source features to achieve our goal.
+ 
+TODO
+The work on MoodlePlugin class is still in progress: we need to implement an easy way to interactively configure the parameters which are passed to the script.
+
+
+Copyrighted by 
+Simone Gammeri (simone.gammeri@gmail.com),
+Francesco Di Cerbo (shadowscheme@gmail.com)
+and L.I.P.S. (www.lips.dist.unige.it),
+Kay Schewe (kay@node71.de)
+
+For further information see the article we exposed at OSS2005 (oss2005.case.unibz.it): "OpenSource for e-Government Application Integration: a PHP-based solution".
+
